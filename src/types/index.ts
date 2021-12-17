@@ -1,0 +1,1 @@
+export type ProceduresTypes = 'STAR' | 'IAC' | 'TAXI' | 'SID';

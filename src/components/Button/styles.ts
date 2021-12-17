@@ -17,7 +17,7 @@ type WrapperProps = {
 }
 
 export const Wrapper = styled.button<WrapperProps>`
-  ${ defaultStyles }
+  ${ defaultStyles };
   border: 0;
   border-radius: 3px;
   background-color: ${ props => ColorMapper[props.color] };
