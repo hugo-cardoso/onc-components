@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { lighten } from 'polished';
 import { theme } from '../../theme';
 import { defaultStyles } from '../../defaultStyles';
+
 import type { ButtonColorTypes, ButtonSizeTypes } from './types';
 
 const ColorMapper = {
@@ -18,10 +19,11 @@ type WrapperProps = {
 
 export const Wrapper = styled.button<WrapperProps>`
   ${ defaultStyles };
+
   border: 0;
   border-radius: 3px;
   background-color: ${ props => ColorMapper[props.color] };
-  color: #fff;
+  color: ${ theme.colors.neutral };
   font-family: ${ theme.fonts.primary };
   cursor: pointer;
   font-weight: 400;

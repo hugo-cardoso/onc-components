@@ -1,27 +1,14 @@
 import styled, { css } from 'styled-components';
-import { defaultStyles } from '../../defaultStyles';
-import { lighten, darken } from 'polished';
+import { lighten } from 'polished';
 import { theme } from '../../theme';
 
 import type { ProceduresTypes } from '../../types';
 
-const ColorMapper = {
-  STAR: '#84d15b',
-  SID: '#dba57c',
-  TAXI: '#4ac8ff',
-  IAC: '#e57daf'
-} as {
-  [key in ProceduresTypes]: string
-}
-
 export const Wrapper = styled.div`
-  ${ defaultStyles };
-
   width: 100%;
-  height: 45px;
+  height: ${ theme.sizes.xxl };
   display: flex;
   justify-content: space-between;
-  background-color: ${ theme.colors.primary };
 `;
 
 type TabProps = {
@@ -35,22 +22,22 @@ export const Tab = styled.div<TabProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid ${darken(.05, theme.colors.primary)};
-  color: #FFF;
+  border-radius: ${theme.sizes.xxs};
+  overflow: hidden;
+  color: ${ theme.colors.neutral };
   font-family: ${ theme.fonts.primary };
   padding-bottom: 4px;
   position: relative;
   font-size: 14px;
   letter-spacing: .5px;
   cursor: pointer;
+  margin-right: ${ theme.sizes.xs };
+  background-color: ${ theme.colors.primary };
+  border: 1px solid ${ theme.colors.primaryLight };
 
   &:hover {
-    background-color: ${ lighten(0.05, theme.colors.primary) };
+    background-color: ${ theme.colors.primaryLight };
   }
-
-  ${ props => props.active && css`
-    background-color: ${ lighten(0.05, theme.colors.primary) };
-  ` };
   
   &:after {
     content: '';
@@ -59,11 +46,21 @@ export const Tab = styled.div<TabProps>`
     left: 0;
     width: 100%;
     height: 4px;
-    background-color: ${ props => ColorMapper[props.type] };
+    background-color: ${ props => theme.colors.procedures[props.type] };
     z-index: 1;
+    transition: height .1s ease-in-out;
   }
   
   &:last-child {
-    border-right: none;
+    margin-right: 0;
   }
+
+  ${ props => props.active && css`
+    background-color: ${ lighten(0.05, theme.colors.primary) };
+    font-weight: 500;
+
+    &:after {
+      height: 6px;
+    }
+  `};
 `;

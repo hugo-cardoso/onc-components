@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as Styles from './styles';
 
 import type{ TabsProceduresProps } from './types';
@@ -16,10 +16,19 @@ export const TabsProcedures = ({
   ] as ProceduresTypes[];
 
   const [activeTab, setActiveTab] = useState(initialTab);
+  const hasMounted = useRef(false);
+
+  useEffect(() => {
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      return;
+    };
+
+    if (onTabChange) onTabChange(activeTab);
+  }, [activeTab]);
 
   const handleClickTab = (procedure: ProceduresTypes) => {
     setActiveTab(procedure);
-    if (onTabChange) onTabChange(procedure);
   };
 
   return (

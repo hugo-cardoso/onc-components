@@ -4,4 +4,13 @@ import '../src/assets/css/styles.css';
 export const parameters = {
   // https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args
   actions: { argTypesRegex: '^on.*' },
+  backgrounds: {
+    default: 'dark',
+    values: [
+      {
+        name: 'dark',
+        value: '#0d0d10',
+      }
+    ],
+  },
 };
