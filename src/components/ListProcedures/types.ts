@@ -1,6 +1,6 @@
 import type { ProceduresTypes } from '../../types';
 
-export type ListProceduresStatus = 'default' | 'loading' | 'error' | 'empty';
+export type ListProceduresStatus = 'default' | 'loading' | 'error' | 'empty' | 'message';
 
 export type Procedure = {
   id: string;
@@ -18,6 +18,7 @@ export type ProceduresGroups = {
 export type ListProceduresProps = {
   procedures: Procedure[];
   status: ListProceduresStatus;
+  message: string;
   onClickProcedure?: (id: string) => void;
   onClickProcedurePin?: (id: string) => void;
 };

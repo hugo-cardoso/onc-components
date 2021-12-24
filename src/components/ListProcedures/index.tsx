@@ -40,6 +40,7 @@ export const ListProcedures = (props: ListProceduresProps) => {
     const messages = {
       empty: 'No procedures found',
       error: 'Something went wrong',
+      message: props.message,
     } as {
       [key in ListProceduresStatus]: string;
     }
