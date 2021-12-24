@@ -11,6 +11,7 @@ const SizeMapper = {
 };
 
 const ColorMapper = {
+  neutral: theme.colors.neutral,
   highlight: theme.colors.primaryHighlight,
   light: theme.colors.primaryLight,
   dark: theme.colors.primaryDark,
